@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads Store | Dijital Reklam ve Strateji Merkezi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #e0e7ff 0%, #ffffff 50%, #f8fafc 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <span class="text-2xl font-800 tracking-tight text-slate-900">ADS<span class="text-indigo-600">STORE</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 font-semibold text-slate-600">
+                    <a href="#home" class="hover:text-indigo-600 transition">Ana Sayfa</a>
+                    <a href="#services" class="hover:text-indigo-600 transition">Hizmetler</a>
+                    <a href="#pricing" class="hover:text-indigo-600 transition">Paketler</a>
+                    <a href="#contact" class="hover:text-indigo-600 transition">İletişim</a>
+                </div>
+
+                <div class="md:hidden text-2xl">
+                    <button id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                </div>
+
+                <a href="#contact" class="hidden md:block btn-primary text-white px-6 py-2.5 rounded-full font-bold shadow-lg">Hemen Başla</a>
+            </div>
+        </div>
+        <!-- Mobil Menü -->
+        <div id="mobile-menu" class="hidden bg-white border-b border-slate-100 p-4 space-y-4">
+            <a href="#home" class="block text-slate-700 font-semibold">Ana Sayfa</a>
+            <a href="#services" class="block text-slate-700 font-semibold">Hizmetler</a>
+            <a href="#pricing" class="block text-slate-700 font-semibold">Paketler</a>
+            <a href="#contact" class="block text-slate-700 font-semibold">İletişim</a>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="flex-1 text-center lg:text-left space-y-8">
+                    <div class="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold tracking-wide uppercase">
+                        🚀 Satışlarınızı %300 Artırın
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-800 leading-tight text-slate-900">
+                        İşletmenizi <span class="text-indigo-600">Dijitalde</span> Büyütün.
+                    </h1>
+                    <p class="text-xl text-slate-600 max-w-2xl leading-relaxed">
+                        Veri odaklı reklam stratejileriyle bütçenizi en verimli şekilde kullanın. Google, Meta ve TikTok reklamlarında profesyonel yönetim desteği alın.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="btn-primary text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-indigo-200">
+                            Ücretsiz Analiz Al
+                        </button>
+                        <button class="bg-white text-slate-700 border-2 border-slate-200 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition">
+                            Hizmetleri İncele
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-4 pt-4">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/100x100/4f46e5/white?text=A" alt="user">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/100x100/7c3aed/white?text=B" alt="user">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/100x100/3b82f6/white?text=C" alt="user">
+                        </div>
+                        <p class="text-slate-500 font-medium text-sm">500+ Mutlu İşletme Sahibi</p>
+                    </div>
+                </div>
+                <div class="flex-1 relative">
+                    <img src="https://placehold.co/600x450/e0e7ff/4f46e5?text=Ads+Dashboard+Preview" alt="Dashboard" class="rounded-3xl shadow-2xl border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-green-100 text-green-600 rounded-full"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">ROI Oranı</p>
+                                <p class="text-xl font-800 text-slate-800">4.8x Artış</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-4xl font-800 text-slate-900">Reklam Hizmetlerimiz</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Hedef kitlenize en doğru kanaldan ulaşmanız için uzman çözümler üretiyoruz.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Google Ads -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 card-hover transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Google Ads</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Arama ağı, görüntülü reklam ve YouTube reklamlarıyla potansiyel müşterileriniz sizi aradığında orada olun.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 font-medium">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Anahtar Kelime Analizi</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Remarketing Kurulumu</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Dönüşüm Takibi</li>
+                    </ul>
+                </div>
+
+                <!-- Meta Ads -->
+                <div class="p-8 rounded-3xl bg-indigo-600 text-white card-hover shadow-2xl shadow-indigo-200 transition-all duration-300">
+                    <div class="w-16 h-16 bg-white/20 text-white rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Meta (FB & IG)</h3>
+                    <p class="text-indigo-100 leading-relaxed mb-6">
+                        Facebook ve Instagram'ın gelişmiş hedefleme seçeneklerini kullanarak markanızı binlerce kişiye ulaştırın.
+                    </p>
+                    <ul class="space-y-3 text-indigo-100 font-medium">
+                        <li><i class="fas fa-check text-indigo-300 mr-2"></i> Kreatif Tasarım Desteği</li>
+                        <li><i class="fas fa-check text-indigo-300 mr-2"></i> Lookalike Kitleler</li>
+                        <li><i class="fas fa-check text-indigo-300 mr-2"></i> A/B Testleri</li>
+                    </ul>
+                </div>
+
+                <!-- TikTok Ads -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 card-hover transition-all duration-300">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">TikTok Ads</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Genç ve dinamik kitleye hitap eden viral içerikler ve reklam modelleriyle markanızı büyütün.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 font-medium">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Trend Analizi</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Video Optimizasyonu</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Geniş Kitle Erişimi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-4xl font-800 text-slate-900">Şeffaf Fiyatlandırma</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">İhtiyacınıza en uygun yönetim paketini seçin, hemen büyümeye başlayın.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm text-center">
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Başlangıç</p>
+                    <div class="text-5xl font-800 text-slate-900 mb-8">₺2.500<span class="text-lg text-slate-400">/ay</span></div>
+                    <ul class="text-left space-y-4 mb-10 text-slate-600">
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> 1 Reklam Kanalı</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Aylık ₺10k Bütçe Yönetimi</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Haftalık Raporlama</li>
+                        <li class="opacity-40 line-through"><i class="fas fa-times-circle mr-3"></i> Özel Kreatif Tasarım</li>
+                    </ul>
+                    <button class="w-full py-4 border-2 border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition">Seç ve Başla</button>
+                </div>
+
+                <!-- Pro -->
+                <div class="bg-white p-10 rounded-3xl border-4 border-indigo-600 shadow-2xl relative text-center">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">En Popüler</div>
+                    <p class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-4">Profesyonel</p>
+                    <div class="text-5xl font-800 text-slate-900 mb-8">₺5.000<span class="text-lg text-slate-400">/ay</span></div>
+                    <ul class="text-left space-y-4 mb-10 text-slate-600">
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Tüm Reklam Kanalları</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Aylık ₺50k Bütçe Yönetimi</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> 7/24 Teknik Destek</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Gelişmiş Remarketing</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> 5 Adet Kreatif Görsel</li>
+                    </ul>
+                    <button class="btn-primary w-full py-4 text-white rounded-2xl font-bold shadow-lg">Hemen Başla</button>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm text-center">
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Kurumsal</p>
+                    <div class="text-5xl font-800 text-slate-900 mb-8">Özel</div>
+                    <ul class="text-left space-y-4 mb-10 text-slate-600">
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Sınırsız Bütçe Yönetimi</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Özel Strateji Ekibi</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> CRM Entegrasyonu</li>
+                        <li><i class="fas fa-check-circle text-indigo-500 mr-3"></i> Rakip Analiz Sistemi</li>
+                    </ul>
+                    <button class="w-full py-4 border-2 border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition">Teklif Al</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-indigo-900 rounded-[3rem] p-12 lg:p-20 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-[120px] opacity-20"></div>
+                
+                <div class="flex flex-col lg:flex-row gap-16 relative z-10">
+                    <div class="flex-1 space-y-8 text-white">
+                        <h2 class="text-4xl lg:text-5xl font-800">Hayalinizdeki <span class="text-indigo-400">Büyümeyi</span> Bugün Başlatın.</h2>
+                        <p class="text-indigo-200 text-lg">Ekibimizle iletişime geçin, işinize özel reklam stratejisini birlikte kuralım.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold text-indigo-300 uppercase">E-Posta</p>
+                                    <p class="text-lg font-semibold">info@adsstore.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><i class="fas fa-phone"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold text-indigo-300 uppercase">Telefon</p>
+                                    <p class="text-lg font-semibold">+90 212 555 00 00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-1">
+                        <form id="contact-form" class="bg-white p-8 lg:p-10 rounded-3xl shadow-2xl space-y-5">
+                            <div class="grid md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Ad Soyad</label>
+                                    <input type="text" required class="w-full px-5 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-600 transition" placeholder="Ahmet Yılmaz">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Telefon</label>
+                                    <input type="tel" required class="w-full px-5 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-600 transition" placeholder="0555...">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Web Siteniz (Varsa)</label>
+                                <input type="url" class="w-full px-5 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-600 transition" placeholder="www.siteniz.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Hizmet Seçin</label>
+                                <select class="w-full px-5 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-600 transition">
+                                    <option>Google Ads</option>
+                                    <option>Meta Ads</option>
+                                    <option>TikTok Ads</option>
+                                    <option>Hepsi</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-4 text-white rounded-xl font-bold text-lg shadow-lg">Teklif İste</button>
+                        </form>
+                        <!-- Form Başarı Mesajı -->
+                        <div id="form-success" class="hidden bg-green-500 text-white p-8 rounded-3xl text-center font-bold">
+                            <i class="fas fa-check-circle text-4xl mb-3"></i>
+                            <p>Mesajınız alındı! Ekibimiz 24 saat içinde sizinle iletişime geçecek.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-2 space-y-6">
+                    <div class="flex items-center gap-2 text-white">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <span class="text-xl font-800 tracking-tight">ADS<span class="text-indigo-500">STORE</span></span>
+                    </div>
+                    <p class="max-w-xs leading-relaxed">Dijital dünyada rakiplerinizin önüne geçmeniz için veriyi stratejiyle birleştiriyoruz.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Hızlı Linkler</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="hover:text-white transition">Hizmetler</a></li>
+                        <li><a href="#" class="hover:text-white transition">Referanslar</a></li>
+                        <li><a href="#" class="hover:text-white transition">Hakkımızda</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Yasal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="hover:text-white transition">Gizlilik Politikası</a></li>
+                        <li><a href="#" class="hover:text-white transition">Çerez Politikası</a></li>
+                        <li><a href="#" class="hover:text-white transition">KVKK Aydınlatma</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm font-medium">
+                <p>&copy; 2024 ADS STORE. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        // Mobil Menü Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form Gönderimi Simülasyonu
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            contactForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            
+            // 5 saniye sonra formu geri getir (demo amaçlı)
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+                contactForm.classList.remove('hidden');
+                contactForm.reset();
+            }, 5000);
+        });
+
+        // Smooth Scrolling (Linkler için)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                mobileMenu.classList.add('hidden'); // Menüyü kapat
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

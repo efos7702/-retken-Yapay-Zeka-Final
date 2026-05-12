@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgi Avcısı - Eğitici Kelime Oyunu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass: rgba(255, 255, 255, 0.95);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text-main);
+        }
+
+        .game-wrapper {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            width: 95%;
+            max-width: 600px;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--bg-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ekranlar */
+        .screen { display: none; }
+        .screen.active { display: block; }
+
+        /* Kategori Butonları */
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .category-buttons button {
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+        }
+
+        .category-buttons button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Oyun İstatistikleri */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        #score-val { color: var(--primary); }
+        #lives-val { color: var(--danger); }
+
+        /* Kelime Tahmin Alanı (Kutular) */
+        .word-display {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 30px 0;
+            min-height: 70px;
+        }
+
+        .letter-box {
+            width: 42px;
+            height: 52px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: white;
+            text-transform: uppercase;
+        }
+
+        .letter-box.revealed {
+            border-color: var(--success);
+            background: #f0fdf4;
+            color: var(--success);
+            animation: flip 0.4s ease;
+        }
+
+        @keyframes flip {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        /* İpucu Kutusu */
+        .hint-box {
+            background: #fef9c3;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #facc15;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Klavye */
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+            gap: 6px;
+            margin-top: 20px;
+        }
+
+        .keyboard button {
+            height: 40px;
+            border: none;
+            background: #f8fafc;
+            color: var(--text-main);
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 0 #cbd5e1;
+        }
+
+        .keyboard button:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .keyboard button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-menu {
+            margin-top: 25px;
+            background: var(--text-main);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Sallanma Animasyonu */
+        .shake { animation: shakeAnim 0.4s; }
+        @keyframes shakeAnim {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-wrapper" id="main-container">
+        
+        <!-- Menü Ekranı -->
+        <div id="screen-menu" class="screen active">
+            <h1>Bilgi Avcısı</h1>
+            <p>Öğrenmek istediğin kategoriyi seç:</p>
+            <div class="category-buttons">
+                <button onclick="initGame('Bilim')">🧪 Bilim</button>
+                <button onclick="initGame('Tarih')">📜 Tarih</button>
+                <button onclick="initGame('Coğrafya')">🌍 Coğrafya</button>
+            </div>
+        </div>
+
+        <!-- Oyun Ekranı -->
+        <div id="screen-game" class="screen">
+            <div class="stats">
+                <span>Puan: <span id="score-val">0</span></span>
+                <span>Can: <span id="lives-val">6</span></span>
+            </div>
+            <h2 id="current-category-name" style="color: var(--primary); margin-bottom: 10px;">Kategori</h2>
+            <div class="hint-box">💡 <span id="hint-text">İpucu burada görünecek.</span></div>
+            
+            <div id="word-display" class="word-display"></div>
+            
+            <div id="keyboard" class="keyboard"></div>
+
+            <button class="btn-menu" onclick="showScreen('screen-menu')">Ana Menüye Dön</button>
+        </div>
+
+    </div>
+
+    <script>
+        const gameData = {
+            "Bilim": [
+                { word: "ATOM", hint: "Maddenin en küçük yapı birimi." },
+                { word: "FOTOSENTEZ", hint: "Bitkilerin ışıkla besin üretmesi." },
+                { word: "TELESKOP", hint: "Gök cisimlerini incelemek için kullanılır." },
+                { word: "MOLEKÜL", hint: "Atomların birleşmesiyle oluşan yapı." }
+            ],
+            "Tarih": [
+                { word: "CUMHURİYET", hint: "Türkiye'nin 1923'te geçen yönetim şekli." },
+                { word: "ANITKABİR", hint: "Atatürk'ün ebedi istirahatgahı." },
+                { word: "OSMANLI", hint: "600 yıl hüküm sürmüş imparatorluk." },
+                { word: "LOZAN", hint: "Kurtuluş Savaşı'nı bitiren barış antlaşması." }
+            ],
+            "Coğrafya": [
+                { word: "EKVATOR", hint: "Dünyayı ortadan bölen hayali çizgi." },
+                { word: "AKDENİZ", hint: "Türkiye'nin güneyindeki deniz." },
+                { word: "OKYANUS", hint: "Kıtaları ayıran çok büyük su kütlesi." },
+                { word: "MARMARA", hint: "İstanbul'un bulunduğu bölge." }
+            ]
+        };
+
+        let selectedWord = "";
+        let selectedHint = "";
+        let guessedLetters = [];
+        let lives = 6;
+        let score = 0;
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function initGame(category) {
+            const words = gameData[category];
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const item = words[randomIndex];
+            
+            selectedWord = item.word.toUpperCase('tr-TR');
+            selectedHint = item.hint;
+            guessedLetters = [];
+            lives = 6;
+            
+            document.getElementById("current-category-name").innerText = category;
+            document.getElementById("hint-text").innerText = selectedHint;
+            document.getElementById("lives-val").innerText = lives;
+            document.getElementById("score-val").innerText = score;
+            
+            renderWord();
+            renderKeyboard();
+            showScreen('screen-game');
+        }
+
+        function renderWord() {
+            const container = document.getElementById("word-display");
+            container.innerHTML = "";
+            
+            selectedWord.split("").forEach(letter => {
+                const box = document.createElement("div");
+                box.classList.add("letter-box");
+                
+                if (guessedLetters.includes(letter)) {
+                    box.innerText = letter;
+                    box.classList.add("revealed");
+                }
+                container.appendChild(box);
+            });
+        }
+
+        function renderKeyboard() {
+            const keyboard = document.getElementById("keyboard");
+            keyboard.innerHTML = "";
+            const tuslar = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+            
+            tuslar.split("").forEach(char => {
+                const btn = document.createElement("button");
+                btn.innerText = char;
+                btn.onclick = () => handleGuess(char, btn);
+                keyboard.appendChild(btn);
+            });
+        }
+
+        function handleGuess(char, btn) {
+            btn.disabled = true;
+            
+            if (selectedWord.includes(char)) {
+                guessedLetters.push(char);
+                btn.style.background = "var(--success)";
+                btn.style.color = "white";
+                score += 20;
+                document.getElementById("score-val").innerText = score;
+                renderWord();
+                checkWin();
+            } else {
+                lives--;
+                btn.style.background = "var(--danger)";
+                btn.style.color = "white";
+                document.getElementById("lives-val").innerText = lives;
+                
+                const gameContainer = document.getElementById("main-container");
+                gameContainer.classList.add("shake");
+                setTimeout(() => gameContainer.classList.remove("shake"), 400);
+                
+                if (lives <= 0) {
+                    setTimeout(() => {
+                        alert("Oyun Bitti! Kelime: " + selectedWord);
+                        score = 0;
+                        showScreen('screen-menu');
+                    }, 500);
+                }
+            }
+        }
+
+        function checkWin() {
+            const isWin = selectedWord.split("").every(l => guessedLetters.includes(l));
+            if (isWin) {
+                setTimeout(() => {
+                    alert("Tebrikler! Kelimeyi buldun. Mevcut Puanın: " + score);
+                    showScreen('screen-menu');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
