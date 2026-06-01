@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Hakkımda</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">EFE ALAGAŞ</div>
+
+    <ul>
+      <li><a href="index.html">ANA SAYFA</a></li>
+      <li><a href="galeri.html">GALERİ</a></li>
+      <li><a href="hakkimda.html" class="active">HAKKIMDA</a></li>
+      <li><a href="iletisim.html">İLETİŞİM</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="card">
+  <h2>Kişisel Bilgi</h2>
+  <p>Merhaba ben Efe, 03.02.2006 Tarihinde, Adana Yüreğir de Doğdum. Lise hayatım Çukurova Meslek Lisesinde geçti. şuanda İstabul Esenyurt'ta yaşamaktayım, Eğitim hayatıma Sinop Üniversitesinde, İnternet ve Ağ Teknolojileri bölümünde devam etmekteyim.</p>
+  
+  <h2>Eğitim</h2>
+  <p>Sinop Üniversitesi — İnternet ve Ağ Teknolojileri</p>
+  <p>Lise: Çukurova Elektrik Mesleki ve Teknik Anadolu Lisesi</p>
+
+  <h2>Yetenekler</h2>
+  <p>Network & Internet %45</p>
+  <p>HTML / CSS %50</p>
+  <p>C# %50</p>
+  <p>Python %50</p>
+</div>
+
+</div>
+
+<footer>
+  © 2025 Efe Alagas | Tüm Hakları Saklıdır.
+</footer>
+
+
+<div class="chat-container">
+  <button class="chat-open-btn" id="openChat">💬 Sohbet</button>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">
+      <h3>Chat Bot</h3>
+      <button id="closeChat" class="close-btn">X</button>
+    </div>
+
+    <div class="chat-messages" id="messages">
+      <div class="bot-msg">Merhaba! Nasıl yardımcı olabilirim?</div>
+    </div>
+
+    <div class="quick-buttons">
+      <button class="quick" data-text="Merhaba">Merhaba</button>
+      <button class="quick" data-text="Bilgi alabilir miyim">Bilgi</button>
+      <button class="quick" data-text="İletişim">İletişim</button>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" id="userInput" placeholder="Mesaj yaz...">
+      <button id="sendBtn" class="send-btn">Gönder</button>
+    </div>
+  </div>
+</div>
+<script src="js/ana.js"></script>
+</body>
+</html>

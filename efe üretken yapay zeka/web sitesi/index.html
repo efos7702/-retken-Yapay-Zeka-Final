@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Ana Sayfa</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">EFE ALAGAŞ</div>
+
+    <ul>
+      <li><a href="index.html" class="active">ANA SAYFA</a></li>
+      <li><a href="galeri.html">GALERİ</a></li>
+      <li><a href="hakkimda.html">HAKKIMDA</a></li>
+      <li><a href="iletisim.html">İLETİŞİM</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero-box">
+  <div class="hero-text">
+    <h1>EFE ALAGAŞ</h1>
+    <p>Sinop Üniversitesi Ayancık Meslek Yüksek Okulu — İnternet ve Ağ Teknolojileri Öğrencisi</p>
+ </div>
+ 
+    <div class="neon-photo-container">
+    <div class="hero-img">
+        <img src="resimler/profil.jpg" alt="Profil Fotoğrafı">
+    </div>
+</div>
+  
+</div>
+
+<footer>
+  © 2025 Efe Alagaş | Tüm Hakları Saklıdır.
+</footer>
+
+
+<div class="chat-container">
+  <button class="chat-open-btn" id="openChat">💬 Sohbet</button>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">
+      <h3>Chat Bot</h3>
+      <button id="closeChat" class="close-btn">X</button>
+    </div>
+
+    <div class="chat-messages" id="messages">
+      <div class="bot-msg">Merhaba! Nasıl yardımcı olabilirim?</div>
+    </div>
+
+    <div class="quick-buttons">
+      <button class="quick" data-text="Merhaba">Merhaba</button>
+      <button class="quick" data-text="Bilgi alabilir miyim">Bilgi</button>
+      <button class="quick" data-text="İletişim">İletişim</button>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" id="userInput" placeholder="Mesaj yaz...">
+      <button id="sendBtn" class="send-btn">Gönder</button>
+    </div>
+  </div>
+</div>
+<script src="js/ana.js"></script>
+</body>
+</html>
